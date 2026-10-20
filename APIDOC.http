@@ -1,0 +1,103 @@
+# ==== USER ====
+
+#api for user
+###
+POST http://127.0.0.1:8000/service/user/
+Content-Type: application/json
+
+{
+    "username":"react",
+    "email":"django@gmail.com",
+    "password":"password@123"
+}
+
+#api for isting user
+###
+GET http://127.0.0.1:8000/service/user/me/
+Accept: application/json
+Authorization: Basic django:password@123
+
+# ==== SERVICE ====
+
+# api for creating service
+###
+POST http://127.0.0.1:8000/service/request/
+Content-Type: application/json
+Authorization: Basic react:password@123
+
+{
+    "vehicle_number": "KL10GH7890",
+    "vehicle_model": "Maruti Suzuki Swift",
+    "problem_description": "  ",
+    "service_type": "Engine Repair",
+    "priority": "High",
+    "status": "Repairing",
+    "service_date": "2026-11-02"
+}
+
+#api for listing all record
+###
+GET http://127.0.0.1:8000/service/request/
+Content-Type: application/json
+Authorization: Basic django:password@123
+
+# api for rerieve
+###
+GET http://127.0.0.1:8000/service/request/2/
+Content-Type: application/json
+Authorization: Basic django:password@123
+
+# api for update
+###
+PUT http://127.0.0.1:8000/service/request/1/
+Content-Type: application/json
+Authorization: Basic django:password@123
+
+{
+  "id": 1,
+  "vehicle_number": "KL10AB1234",
+  "vehicle_model": "BMW",
+  "problem_description": "Engine making unusual noise",
+  "service_type": "Engine Repair",
+  "priority": "High",
+  "status": "Requested",
+  "service_date": "2026-10-30",
+  "created_date": "2026-10-19T10:52:07.719921Z",
+  "user": 1
+}
+
+# api for delete
+###
+DELETE http://127.0.0.1:8000/service/request/5/
+Accept: application/json
+Authorization: Basic django:password@123
+
+# api for filter
+###
+GET http://127.0.0.1:8000/service/request/filter/?service_type=Engine Repair&priority=High&status=Requested
+Accept: application/json
+Authorization: Basic django:password@123
+
+# api for serach 
+###
+GET http://127.0.0.1:8000/service/request/search/?vehicle_number=KL10AB1234&vehicle_model=BMW
+Accept: application/json
+Authorization: Basic django:password@123
+
+# api for pending
+###
+GET http://127.0.0.1:8000/service/request/pending/
+Accept: application/json
+Authorization: Basic django:password@123
+
+# api for summary 
+###
+GET http://127.0.0.1:8000/service/request/summary/
+Accept: application/json
+Authorization: Basic django:password@123
+
+# api for priority
+###
+GET http://127.0.0.1:8000/service/request/priority/
+Accept: application/json
+Authorization: Basic django:password@123
